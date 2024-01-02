@@ -1,0 +1,7 @@
+npm init -y
+npm install pg
+npm install ejs
+npm install express pg path
+npm install express sqlite3
+npm install body-parser
+node field.js

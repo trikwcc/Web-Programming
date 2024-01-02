@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listagem de Livros</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="listaDeLivros.css" />
+    <script src="./field.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Listagem de Livros</h1>
+        </div>
+        <div class="col-md-6 text-right">
+          <a href="/cadastroLivro.html">Cadastro de Livro</a>
+        </div>
+      </div>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Livro</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Sinopse</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Comentário</th>
+            <th scope="col">Ação</th>
+            <th scope="col">Alterar</th>
+          </tr>
+        </thead>
+        <tbody id="livrosTableBody"></tbody>
+      </table>
+      <script>
+        function displayLivros(livros) {
+          const tbody = document.getElementById("livrosTableBody");
+          tbody.innerHTML = "";
+          livros.forEach((livro) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+  <th scope="row">${livro.id}</th>
+  <td>${livro.livro}</td>
+  <td>${livro.autor}</td>
+  <td contenteditable="true" id="sinopse-${livro.id}">${livro.sinopse}</td>
+  <td>${livro.nota}</td>
+  <td contenteditable="true" id="comentario-${livro.id}">${livro.comentario}</td>
+  <td>
+    <button class="btn btn-primary" onclick="alterarLivro(${livro.id});">Edit</button>
+  </td>
+  <td>
+    <button class="btn btn-danger" onclick="deleteLivro(${livro.id});">Delete</button>
+  </td>
+`;
+            tbody.appendChild(row);
+          });
+        }
+
+        function fetchLivros() {
+          fetch("/livros")
+            .then((response) => response.json())
+            .then((data) => {
+              if (data && data.success) {
+                displayLivros(data.livros);
+              } else {
+                console.error("Error fetching books:", data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching books:", error);
+            });
+        }
+
+        function deleteLivro(id) {
+          fetch("/apagarLivro", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data && data.success) {
+                fetchLivros();
+              } else {
+                console.error("Error deleting book:", data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Error deleting book:", error);
+            });
+        }
+
+        function alterarLivro(id) {
+          const sinopseElement = document.querySelector(`#sinopse-${id}`);
+          const comentarioElement = document.querySelector(`#comentario-${id}`);
+          const sinopse = sinopseElement.textContent;
+          const comentario = comentarioElement.textContent;
+
+          fetch("/alterarLivro", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id, sinopse, comentario }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data && data.success) {
+                fetchLivros();
+              } else {
+                console.error("Error updating book:", data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Error updating book:", error);
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", fetchLivros);
+      </script>
+    </div>
+  </body>
+</html>

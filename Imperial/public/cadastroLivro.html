@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Livros</title>
+    <link rel="stylesheet" href="cadastroLivro.css">
+    <script src="/Pooos/field.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Cadastro de Livros</h2>
+
+        <form action="/processarCadastro" method="post" onsubmit="processarCadastro(event)">
+
+            <label for="NomeLivro">Nome do Livro:</label><br>
+            <input type="text" id="NomeLivro" name="NomeLivro"><br>
+
+            <label for="NomeAUTOR">Nome do Autor:</label><br>
+            <input type="text" id="NomeAUTOR" name="NomeAUTOR"><br>
+
+            <label for="sinopse">Sinopse:</label><br>
+            <textarea id="sinopse" name="sinopse"></textarea><br>
+
+            <label for="nota">Nota do Livro:</label><br>
+            <input type="number" id="nota" name="nota" min="0" max="10"><br>
+
+            <label for="Comentario">Comentário:</label><br>
+            <textarea id="Comentario" name="comentario"></textarea><br>
+
+            <input id="Adicionar" type="submit" value="Adicionar">
+            <a href="listaDeLivros.html"><button type="button">Lista de Livros</button></a>
+            <a href="login.html"><button type="button">Sair</button></a>
+    </form>
+    </div>
+    
+</body>
+</html>

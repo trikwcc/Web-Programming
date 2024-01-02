@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="cadastroUsuario.css">
+    <script src="./field.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro</h2>
+        <form action="/processarCadastroUsuario" method="post" onsubmit="processarCadastroUsuario(event)">
+            <label for="nome"><b>Nome:</b></label>
+            <input type="text" placeholder="Insira seu nome" name="nome" required>
+
+            <label for="email"><b>Email:</b></label>
+            <input type="email" placeholder="Insira seu email" name="email" required>
+
+            <label for="password"><b>Password:</b></label>
+            <input type="password" placeholder="Insira sua senha" name="password" required>
+
+            <button type="submit" name="submit">Cadastrar</button>
+        </form>
+
+        <a href="login.html" class="button">Login</a>
+    </div>
+</body>
+</html>
