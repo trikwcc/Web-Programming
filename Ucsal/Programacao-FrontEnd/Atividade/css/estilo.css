@@ -1,0 +1,250 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter',Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #aaaaaa;
+    padding: 30px 10px 0px 10px;
+    /* Topo Direita Baixo Esquerda */
+}
+
+header h1 a {
+    background: url("../imagens/h1_logo.png") no-repeat;
+    display: block;
+    height: 50px;
+    width: 150px;
+    padding-left: 60px;
+    /* CSS do Texto */
+    color: #737373;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: normal;
+    padding-top: 10px;
+    text-decoration: none;
+    /* CSS Float Relação direira e esquerda do botão e menus*/
+    float: left;
+    margin-bottom: 30px;
+}
+
+header h1 a:hover {
+    background: url("../imagens/h1_display_hover.png") no-repeat;
+    color: #00CD6B;
+}
+
+nav#social {
+    float: right;
+}
+
+nav#social ul li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline;
+}
+
+nav#social ul li a {
+    display: block;
+    float: left;
+    width: 34px;
+    height: 34px;
+    text-indent: -99999px;
+    margin-right: 5px;
+}
+
+nav#social ul li a#twitter {
+    background: url("../imagens/twitter.png") no-repeat;
+}
+
+nav#social ul li a:hover#twitter {
+    background: url("../imagens/twitter_hover.png") no-repeat;
+}
+
+nav#social ul li a#facebook {
+    background: url("../imagens/facebook.png") no-repeat;
+}
+
+nav#social ul li a:hover#facebook {
+    background: url("../imagens/facebook_hover.png") no-repeat;
+}
+
+nav#social ul li a#google {
+    background: url("../imagens/google.png") no-repeat;
+}
+
+nav#social ul li a:hover#google {
+    background: url("../imagens/google_hover.png") no-repeat;
+}
+
+
+nav#social ul li a#rss {
+    background: url("../imagens/rss.png") no-repeat;
+}
+
+nav#social ul li a:hover#rss {
+    background: url("../imagens/rss_hover.png") no-repeat;
+}
+
+
+nav#social ul li a#pinterest {
+    background: url("../imagens/pinterest.png") no-repeat;
+}
+
+nav#social ul li a:hover#pinterest {
+    background: url("../imagens/pinterest_hover.png") no-repeat;
+}
+
+nav#social ul li a#dribbble {
+    background: url("../imagens/dribbble.png") no-repeat;
+}
+
+nav#social ul li a:hover#dribbble {
+    background: url("../imagens/dribbble_hover.png") no-repeat;
+}
+
+nav#principal {
+    clear: both;
+    border-top: #737373 solid 2px;
+}
+
+nav#principal ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav#principal ul li {
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+nav#principal ul li a {
+    display: block;
+    float: left;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    color: #747474;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+nav#principal ul li a:hover {
+    color: #00CD6B;
+}
+
+/* CSS do Banner */
+
+section#banner {
+    clear: both;
+    padding-top: 117px;
+    background: url("../imagens/bg_banner.png") no-repeat top center;
+    text-align: center;
+}
+
+section#banner img {
+    width: 830px;
+    height: 472px;
+}
+
+/* CSS do Botão Banner */
+
+section#banner button {
+    width: 180px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #2DCC70;
+    border: none;
+}
+
+section#banner button:hover {
+    background: #747474;
+}
+
+section#banner a {
+    color: #FEFEFE;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+section#conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+}
+
+section#conteudo h2 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+section#conteudo .news h2 a {
+    color: #737373;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+div.news {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    background: #EFEFEF;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+}
+
+/* CSS Responsivo */
+/* CSS para Tablet */
+@media only screen and (max-width:768px) {
+    header {
+        padding: 0 0 0 0;
+    }
+
+    nav#social {
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+
+    section#banner {
+        padding-top: 40px;
+    }
+
+    section#banner img{
+        width: 100%;
+        height: auto;
+    }
+
+    section#conteudo {
+        width: auto;
+        margin-left: 10px;
+        margin-right: 10px;
+        text-align: center;
+    }
+
+}
